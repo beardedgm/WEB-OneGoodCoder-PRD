@@ -166,20 +166,23 @@ A flat-by-default, lift-on-intent system. Surfaces rest flat on the cream field 
 - **Outline:** Transparent with a 1.5px sand border and ink text; on hover the border and text shift to terracotta and the button lifts.
 
 ### Cards / Containers
+Cards are used sparingly, only where a single bounded artifact earns the box: the Education credential and the portfolio thumbnails. List-like sections (Experience, Publications, Skills) are NOT cards; they use the ruled-rail pattern (see Experience Row). Avoid reaching for a card grid when a typographic rail will do.
 - **Corner Style:** 10px (`--border-radius-lg`).
-- **Background:** Card White (#FFFFFF) on the cream/sand page; the single current-item card uses Gold Wash (#FDF6E3).
+- **Background:** Card White (#FFFFFF) on the cream/sand page. The Gold Wash (#FDF6E3) highlight is reserved for the current Experience row (a rail row, not a card).
 - **Shadow Strategy:** Flat at rest (hairline border), `0 12px 32px` warm shadow + `translateY(-4px)` on hover (see Elevation).
-- **Border:** 1px Border Sand (#E7E0D6); gold-tinted border on hover and on the current item.
+- **Border:** 1px Border Sand (#E7E0D6).
 - **Internal Padding:** Generous (`2rem`–`3rem`, `--space-xl`/`--space-2xl`).
 
 ### Navigation
 - **Style:** Fixed top bar, transparent over the hero; on scroll it gains a translucent cream background (`rgba(250, 247, 242, 0.92)`) with a 16px backdrop blur and a hairline bottom rule.
 - **Logo:** DM Sans 700, uppercase, wide tracking (0.12em), ink.
 - **Links:** DM Sans 500, Ink Muted at rest; on hover/active they turn terracotta and a 1.5px terracotta underline grows from 0 to full width.
-- **Mobile:** Off-canvas panel from the right with a slide-in shadow.
+- **Mobile:** Collapses to an off-canvas drawer from the right (slide-in shadow) at ≤900px, where the seven labels plus the CTA stop fitting on one line. Drawer links are full 44px tap rows.
 
 ### Experience Row (signature)
-The career history is an editorial CV spread, not a stack of cards. Each role is a two-column row: a left meta-rail carries the timeframe (gold uppercase eyebrow, Antique Gold Text #8A6309) over the location (Ink Faint), and the right column carries a Syne role headline, a terracotta company line, and a DM Sans prose summary (capped at ~62ch). Rows sit on the bare paper and are divided by full-width hairline rules (Border Sand #E7E0D6), no card chrome. Hierarchy is type and color, not boxes. On hover a row takes a faint warm wash (`rgb(var(--color-gold-rgb) / 0.06)`) as a scanning cue, no lift. The current (present) role is a softly highlighted Gold Wash (#FDF6E3) band with a small gold "Current" pill beside the role; the first rows reveal in a short staggered cascade. On mobile the columns stack, meta-rail above the role, rules intact. No side-stripe or accent rail; the hairline rule is the only divider.
+The career history is an editorial CV spread, not a stack of cards. Each role is a two-column row: a left meta-rail carries the timeframe (gold uppercase eyebrow, Antique Gold Text #8A6309) over the location (Ink Faint), and the right column carries a Syne role headline, a terracotta company line, optional scannable metric highlights (a bold Syne figure in Ink with a muted label), and a DM Sans prose summary (capped at ~62ch). Rows sit on the bare paper and are divided by full-width hairline rules (Border Sand #E7E0D6), no card chrome. Hierarchy is type and color, not boxes. On hover a row takes a faint warm wash (`rgb(var(--color-gold-rgb) / 0.06)`) as a scanning cue, no lift. The current (present) role is a softly highlighted Gold Wash (#FDF6E3) band with a small gold "Current" pill beside the role; the first rows reveal in a short staggered cascade. On mobile the columns stack, meta-rail above the role, rules intact. No side-stripe or accent rail; the hairline rule is the only divider.
+
+**This ruled-rail is the page's dominant content pattern**, shared by three sections: Experience (role rows), Publications (a press index: gold year rail + title + source), and Skills (capability rows: category label left, quiet terracotta *outline* chips right). Cards are the exception, not the default.
 
 ## 6. Do's and Don'ts
 
