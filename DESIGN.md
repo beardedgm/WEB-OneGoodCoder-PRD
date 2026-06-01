@@ -178,8 +178,8 @@ A flat-by-default, lift-on-intent system. Surfaces rest flat on the cream field 
 - **Links:** DM Sans 500, Ink Muted at rest; on hover/active they turn terracotta and a 1.5px terracotta underline grows from 0 to full width.
 - **Mobile:** Off-canvas panel from the right with a slide-in shadow.
 
-### Experience Card (signature)
-A vertical stack of prose role cards (one paragraph per role). Each is a flat, full-bordered white card carrying a gold uppercase date·location eyebrow (Antique Gold Text #8A6309), a Syne role headline, a terracotta company line, and a DM Sans summary. Hierarchy is carried by type and color, not by chrome. On hover the card lifts, gains a soft shadow, and its border shifts to gold; the cards reveal in a short staggered cascade. The current (present) role is distinguished by the Gold Wash (#FDF6E3) background and a warmer gold border. No side-stripe or accent rail; the full border is the frame.
+### Experience Row (signature)
+The career history is an editorial CV spread, not a stack of cards. Each role is a two-column row: a left meta-rail carries the timeframe (gold uppercase eyebrow, Antique Gold Text #8A6309) over the location (Ink Faint), and the right column carries a Syne role headline, a terracotta company line, and a DM Sans prose summary (capped at ~62ch). Rows sit on the bare paper and are divided by full-width hairline rules (Border Sand #E7E0D6), no card chrome. Hierarchy is type and color, not boxes. On hover a row takes a faint warm wash (`rgb(var(--color-gold-rgb) / 0.06)`) as a scanning cue, no lift. The current (present) role is a softly highlighted Gold Wash (#FDF6E3) band with a small gold "Current" pill beside the role; the first rows reveal in a short staggered cascade. On mobile the columns stack, meta-rail above the role, rules intact. No side-stripe or accent rail; the hairline rule is the only divider.
 
 ## 6. Do's and Don'ts
 
