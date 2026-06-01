@@ -15,7 +15,7 @@
     initScrollSpy();
     initRevealAnimations();
     initPortfolioModals();
-    initContactForm();
+    initPrintResume();
   }
 
   /* ============================================
@@ -251,78 +251,13 @@
   }
 
   /* ============================================
-     CONTACT FORM (Formspree)
+     PRINT RÉSUMÉ
      ============================================ */
-  function initContactForm() {
-    var form = document.getElementById('contact-form');
-    if (!form) return;
-
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-
-      var submitBtn = form.querySelector('.form__submit');
-      var statusEl = form.querySelector('.form__status');
-
-      // Validate
-      var name = form.querySelector('[name="name"]');
-      var email = form.querySelector('[name="email"]');
-      var message = form.querySelector('[name="message"]');
-
-      if (!name.value.trim() || !email.value.trim() || !message.value.trim()) {
-        showStatus(statusEl, 'error', 'Please fill in all required fields.');
-        return;
-      }
-
-      if (!isValidEmail(email.value)) {
-        showStatus(statusEl, 'error', 'Please enter a valid email address.');
-        return;
-      }
-
-      // Show loading
-      submitBtn.classList.add('btn--loading');
-      submitBtn.disabled = true;
-      hideStatus(statusEl);
-
-      // Submit to Formspree
-      var formData = new FormData(form);
-
-      fetch(form.action, {
-        method: 'POST',
-        body: formData,
-        headers: { Accept: 'application/json' },
-      })
-        .then(function (response) {
-          if (response.ok) {
-            showStatus(statusEl, 'success', 'Message sent successfully! I\'ll get back to you soon.');
-            form.reset();
-          } else {
-            throw new Error('Form submission failed');
-          }
-        })
-        .catch(function () {
-          showStatus(statusEl, 'error', 'Something went wrong. Please try again or email me directly.');
-        })
-        .finally(function () {
-          submitBtn.classList.remove('btn--loading');
-          submitBtn.disabled = false;
-        });
+  function initPrintResume() {
+    var btn = document.getElementById('print-resume');
+    if (!btn) return;
+    btn.addEventListener('click', function () {
+      window.print();
     });
-  }
-
-  function showStatus(el, type, message) {
-    if (!el) return;
-    el.className = 'form__status form__status--' + type;
-    el.textContent = message;
-  }
-
-  function hideStatus(el) {
-    if (!el) return;
-    el.className = 'form__status';
-    el.textContent = '';
-    el.style.display = '';
-  }
-
-  function isValidEmail(email) {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   }
 })();

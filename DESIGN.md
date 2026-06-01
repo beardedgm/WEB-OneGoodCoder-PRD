@@ -72,11 +72,6 @@ components:
     textColor: "{colors.ink}"
     rounded: "{rounded.sm}"
     padding: "0.85rem 2rem"
-  input:
-    backgroundColor: "{colors.cream-paper}"
-    textColor: "{colors.ink}"
-    rounded: "{rounded.sm}"
-    padding: "0.8rem 1rem"
   card:
     backgroundColor: "{colors.card-white}"
     textColor: "{colors.ink}"
@@ -124,7 +119,7 @@ A warm editorial palette built on paper-toned neutrals, one decisive terracotta,
 - **Espresso** (#1C1917): Reserved deep near-black for high-contrast surfaces (footer / dark panels).
 - **Ink** (#292524): Primary text and headlines. The default reading color.
 - **Ink Muted** (#645D57): Secondary text, body prose in cards, meta. Clears AA on cream (6.06:1), sand (5.45:1), and white (6.47:1).
-- **Ink Faint** (#6E6760): Placeholders and tertiary captions/labels (school, source, detail labels). AA-safe on cream (5.21:1) and sand (4.69:1); still clearly lighter than Ink Muted.
+- **Ink Faint** (#6E6760): Tertiary captions and labels (school, source, detail labels). AA-safe on cream (5.21:1) and sand (4.69:1); still clearly lighter than Ink Muted.
 - **Border Sand** (#E7E0D6): Hairline borders, dividers, card outlines.
 
 ### Named Rules
@@ -176,10 +171,6 @@ A flat-by-default, lift-on-intent system. Surfaces rest flat on the cream field 
 - **Shadow Strategy:** Flat at rest (hairline border), `0 12px 32px` warm shadow + `translateY(-4px)` on hover (see Elevation).
 - **Border:** 1px Border Sand (#E7E0D6); gold-tinted border on hover and on the current item.
 - **Internal Padding:** Generous (`2rem`–`3rem`, `--space-xl`/`--space-2xl`).
-
-### Inputs / Fields
-- **Style:** Cream (#FAF7F2) fill, 1px sand border, 6px radius, body type. Placeholders use Ink Faint (#A8A29E).
-- **Focus:** Border shifts to terracotta with a 3px low-opacity terracotta ring (`0 0 0 3px rgba(194, 65, 12, 0.08)`). No hard outline.
 
 ### Navigation
 - **Style:** Fixed top bar, transparent over the hero; on scroll it gains a translucent cream background (`rgba(250, 247, 242, 0.92)`) with a 16px backdrop blur and a hairline bottom rule.
