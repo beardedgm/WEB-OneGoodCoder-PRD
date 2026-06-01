@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-05-31T00:00:00Z",
+  "generatedAt": "2026-06-01T00:00:00Z",
   "title": "Design System: Derrick Dedmon Portfolio",
   "extensions": {
     "colorMeta": {
@@ -56,14 +56,6 @@
       "description": "Transparent secondary action with a sand border that turns terracotta on hover.",
       "html": "<a href=\"#portfolio\" class=\"ds-btn-outline\">View my work</a>",
       "css": ".ds-btn-outline { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.85rem 2rem; font-family: 'DM Sans', sans-serif; font-size: 0.875rem; font-weight: 600; letter-spacing: 0.02em; color: #292524; background-color: transparent; border: 1.5px solid #E7E0D6; border-radius: 6px; transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1); text-decoration: none; } .ds-btn-outline:hover { border-color: #C2410C; color: #C2410C; transform: translateY(-2px); } .ds-btn-outline:focus-visible { outline: 2px solid #C2410C; outline-offset: 3px; }"
-    },
-    {
-      "name": "Text Input",
-      "kind": "input",
-      "refersTo": "input",
-      "description": "Cream-filled field with a terracotta focus ring.",
-      "html": "<input class=\"ds-input\" type=\"text\" placeholder=\"Your name\" aria-label=\"Your name\">",
-      "css": ".ds-input { width: 100%; padding: 0.8rem 1rem; font-family: 'DM Sans', sans-serif; font-size: 1.0625rem; color: #292524; background-color: #FAF7F2; border: 1px solid #E7E0D6; border-radius: 6px; transition: border-color 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1); } .ds-input::placeholder { color: #A8A29E; } .ds-input:focus { outline: none; border-color: #C2410C; box-shadow: 0 0 0 3px rgba(194, 65, 12, 0.08); }"
     },
     {
       "name": "Card",
