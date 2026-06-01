@@ -1020,8 +1020,11 @@ h1, h2, h3, h4, h5, h6 {
    PUBLICATIONS
    ============================================ */
 .publications__grid {
-  max-width: 760px;
+  max-width: 980px;
   margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: var(--space-3xl);
 }
 
 /* Press recognition as an editorial index: year in a left rail, title + source
@@ -1036,7 +1039,9 @@ h1, h2, h3, h4, h5, h6 {
   transition: background-color var(--transition-base);
 }
 
-.publication:first-child {
+/* Top row of both columns sits flush; rules divide the rows below. */
+.publication:first-child,
+.publication:nth-child(2) {
   border-top: none;
 }
 
@@ -1307,6 +1312,15 @@ h1, h2, h3, h4, h5, h6 {
 
   .container {
     padding: 0 var(--space-lg);
+  }
+
+  /* Publications return to a single column; restore the second item's rule. */
+  .publications__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .publication:nth-child(2) {
+    border-top: 1px solid var(--color-border);
   }
 
   .nav__cta .btn {
