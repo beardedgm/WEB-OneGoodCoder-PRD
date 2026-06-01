@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-05-31T00:00:00Z",
+  "title": "Design System: Derrick Dedmon Portfolio",
+  "extensions": {
+    "colorMeta": {
+      "terracotta": { "role": "primary", "displayName": "Burnt Terracotta", "canonical": "#C2410C", "tonalRamp": ["#3D1404", "#5C1E06", "#7A2908", "#9A3412", "#C2410C", "#E0612E", "#EE8A5E", "#FBD9C6"] },
+      "antique-gold": { "role": "secondary", "displayName": "Antique Gold", "canonical": "#B8860B", "tonalRamp": ["#3A2B03", "#574004", "#745507", "#956E09", "#B8860B", "#D6A52E", "#E6C266", "#F7EBC6"] },
+      "antique-gold-text": { "role": "secondary", "displayName": "Antique Gold Text", "canonical": "#8A6309", "tonalRamp": ["#2E2103", "#463304", "#5E4507", "#745507", "#8A6309", "#A87E1E", "#C99F3E", "#E6C266"] },
+      "cream-paper": { "role": "neutral", "displayName": "Cream Paper", "canonical": "#FAF7F2", "tonalRamp": ["#1C1917", "#3A332D", "#5C5249", "#8A7E72", "#B8AD9F", "#DAD2C6", "#F0EBE3", "#FAF7F2"] },
+      "sand": { "role": "neutral", "displayName": "Sand", "canonical": "#F0EBE3", "tonalRamp": ["#1C1917", "#3A332D", "#5C5249", "#8A7E72", "#B8AD9F", "#D4CBBD", "#E7E0D6", "#F0EBE3"] },
+      "ink": { "role": "neutral", "displayName": "Ink", "canonical": "#292524", "tonalRamp": ["#0F0D0C", "#1C1917", "#292524", "#44403B", "#6B635B", "#968C82", "#C4BBB0", "#E7E0D6"] },
+      "ink-muted": { "role": "neutral", "displayName": "Ink Muted", "canonical": "#645D57", "tonalRamp": ["#221F1C", "#332F2B", "#44403B", "#544D47", "#645D57", "#857C74", "#A8A29E", "#D2CCC4"] },
+      "ink-faint": { "role": "neutral", "displayName": "Ink Faint", "canonical": "#6E6760", "tonalRamp": ["#2A2622", "#3D3833", "#504A44", "#5F5851", "#6E6760", "#928A82", "#B8B0A8", "#DDD7CF"] },
+      "border-sand": { "role": "neutral", "displayName": "Border Sand", "canonical": "#E7E0D6" }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero headline only; Syne 700 with slight negative tracking." },
+      "headline": { "displayName": "Headline", "purpose": "Section titles in Syne 700." },
+      "title": { "displayName": "Title", "purpose": "Card-level role and item headings in Syne 700." },
+      "body": { "displayName": "Body", "purpose": "All prose in DM Sans 400; measure 65-75ch." },
+      "label": { "displayName": "Label", "purpose": "Eyebrows and meta; DM Sans 600 uppercase, 0.15em tracking." }
+    },
+    "shadows": [
+      { "name": "card-hover", "value": "0 12px 32px rgba(28, 25, 23, 0.1)", "purpose": "Standard card lift on hover, paired with translateY(-4px)." },
+      { "name": "button-accent-rest", "value": "0 2px 8px rgba(194, 65, 12, 0.2)", "purpose": "Soft terracotta glow grounding the primary button at rest." },
+      { "name": "button-accent-hover", "value": "0 6px 20px rgba(194, 65, 12, 0.3)", "purpose": "Deeper terracotta glow on primary-button hover." },
+      { "name": "overlay", "value": "0 32px 80px rgba(28, 25, 23, 0.16)", "purpose": "Heaviest elevation for modals and overlays." }
+    ],
+    "motion": [
+      { "name": "ease-fast", "value": "0.2s cubic-bezier(0.4, 0, 0.2, 1)", "purpose": "Color and small state changes (links, nav, input focus)." },
+      { "name": "ease-base", "value": "0.35s cubic-bezier(0.4, 0, 0.2, 1)", "purpose": "Default for hover lifts, card and button transitions." },
+      { "name": "ease-slow", "value": "0.6s cubic-bezier(0.4, 0, 0.2, 1)", "purpose": "Larger transitions." },
+      { "name": "ease-spring", "value": "0.5s cubic-bezier(0.34, 1.56, 0.64, 1)", "purpose": "Springy overshoot, used sparingly for emphasis." },
+      { "name": "reveal", "value": "0.7s cubic-bezier(0.4, 0, 0.2, 1)", "purpose": "Scroll-reveal entrance (opacity + translateY 28px); staggered for lists." }
+    ],
+    "breakpoints": [
+      { "name": "lg", "value": "1024px" },
+      { "name": "md", "value": "768px" },
+      { "name": "sm", "value": "480px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Solid terracotta call-to-action with a warm glow; lifts on hover.",
+      "html": "<a href=\"#contact\" class=\"ds-btn-primary\">Get in touch</a>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.85rem 2rem; font-family: 'DM Sans', sans-serif; font-size: 0.875rem; font-weight: 600; letter-spacing: 0.02em; color: #FFFFFF; background-color: #C2410C; border-radius: 6px; box-shadow: 0 2px 8px rgba(194, 65, 12, 0.2); transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1); text-decoration: none; } .ds-btn-primary:hover { background-color: #9A3412; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(194, 65, 12, 0.3); } .ds-btn-primary:focus-visible { outline: 2px solid #C2410C; outline-offset: 3px; }"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Transparent secondary action with a sand border that turns terracotta on hover.",
+      "html": "<a href=\"#portfolio\" class=\"ds-btn-outline\">View my work</a>",
+      "css": ".ds-btn-outline { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.85rem 2rem; font-family: 'DM Sans', sans-serif; font-size: 0.875rem; font-weight: 600; letter-spacing: 0.02em; color: #292524; background-color: transparent; border: 1.5px solid #E7E0D6; border-radius: 6px; transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1); text-decoration: none; } .ds-btn-outline:hover { border-color: #C2410C; color: #C2410C; transform: translateY(-2px); } .ds-btn-outline:focus-visible { outline: 2px solid #C2410C; outline-offset: 3px; }"
+    },
+    {
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Cream-filled field with a terracotta focus ring.",
+      "html": "<input class=\"ds-input\" type=\"text\" placeholder=\"Your name\" aria-label=\"Your name\">",
+      "css": ".ds-input { width: 100%; padding: 0.8rem 1rem; font-family: 'DM Sans', sans-serif; font-size: 1.0625rem; color: #292524; background-color: #FAF7F2; border: 1px solid #E7E0D6; border-radius: 6px; transition: border-color 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1); } .ds-input::placeholder { color: #A8A29E; } .ds-input:focus { outline: none; border-color: #C2410C; box-shadow: 0 0 0 3px rgba(194, 65, 12, 0.08); }"
+    },
+    {
+      "name": "Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "White surface lifted off the cream page; flat at rest, shadow on hover.",
+      "html": "<div class=\"ds-card\"><h3 class=\"ds-card__title\">Bachelor of Fine Arts</h3><p class=\"ds-card__body\">A short supporting line describing the item.</p></div>",
+      "css": ".ds-card { background: #FFFFFF; border: 1px solid #E7E0D6; border-radius: 10px; padding: 2rem 3rem; transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1); } .ds-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(28, 25, 23, 0.1); } .ds-card__title { font-family: 'Syne', sans-serif; font-size: 1.5rem; font-weight: 700; line-height: 1.15; color: #292524; margin: 0 0 0.5rem; } .ds-card__body { font-family: 'DM Sans', sans-serif; font-size: 1.0625rem; line-height: 1.65; color: #645D57; margin: 0; }"
+    },
+    {
+      "name": "Nav Link",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Top-nav link with a terracotta underline that grows from zero on hover/active.",
+      "html": "<a href=\"#experience\" class=\"ds-nav-link\">Experience</a>",
+      "css": ".ds-nav-link { position: relative; font-family: 'DM Sans', sans-serif; font-size: 0.875rem; font-weight: 500; color: #645D57; text-decoration: none; transition: color 0.2s cubic-bezier(0.4, 0, 0.2, 1); } .ds-nav-link::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1.5px; background-color: #C2410C; transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1); } .ds-nav-link:hover, .ds-nav-link[aria-current=\"true\"] { color: #C2410C; } .ds-nav-link:hover::after, .ds-nav-link[aria-current=\"true\"]::after { width: 100%; }"
+    },
+    {
+      "name": "Experience Card",
+      "kind": "custom",
+      "refersTo": "card",
+      "description": "Signature prose role card: flat full-bordered white card with a gold date eyebrow, Syne role, terracotta company, and body summary. Lifts and gains a gold border on hover. No side-stripe; type and border carry it.",
+      "html": "<article class=\"ds-exp\"><div class=\"ds-exp__meta\">March 2023 – Present · The Woodlands, TX</div><h3 class=\"ds-exp__role\">Director of Communications</h3><div class=\"ds-exp__company\">The Woodlands Methodist Church</div><p class=\"ds-exp__summary\">Leads digital communication and brand expression across a large multi-campus congregation, aligning teams around the website ecosystem, database, and social presence.</p></article>",
+      "css": ".ds-exp { background: #FFFFFF; border: 1px solid #E7E0D6; border-radius: 10px; padding: 2rem 3rem; transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.35s cubic-bezier(0.4, 0, 0.2, 1); } .ds-exp:hover { transform: translateY(-4px); box-shadow: 0 14px 36px rgba(28, 25, 23, 0.1); border-color: rgb(184 134 11 / 0.32); } .ds-exp__meta { font-family: 'DM Sans', sans-serif; font-size: 0.8125rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: #8A6309; margin-bottom: 0.5rem; } .ds-exp__role { font-family: 'Syne', sans-serif; font-size: 1.5rem; font-weight: 700; line-height: 1.15; letter-spacing: -0.01em; color: #292524; margin: 0; } .ds-exp__company { font-family: 'DM Sans', sans-serif; font-size: 1.125rem; font-weight: 500; color: #C2410C; margin-top: 0.25rem; } .ds-exp__summary { font-family: 'DM Sans', sans-serif; font-size: 1.0625rem; line-height: 1.65; color: #645D57; margin-top: 1rem; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Editorial Résumé",
+    "overview": "A printed magazine feature about a career, rendered for the web. Warm paper stock, confident headlines, and generous prose carry a 25-year arc from graphic design to communications leadership. The personality is warm, editorial, and credible: approachable enough to feel human, composed enough to read as authority earned over decades. Nothing shouts; the work and the writing do the persuading. The accent is a single burnt terracotta against an antique-gold second, used sparingly so color reads as voice rather than decoration.",
+    "keyCharacteristics": [
+      "Warm cream paper field, never stark white as the page background.",
+      "A single terracotta accent used on a small fraction of any screen, with antique gold as a quieter second.",
+      "Confident Syne display headlines paired with a humanist DM Sans body.",
+      "White cards as the unit of substance; the page beneath stays calm.",
+      "Motion supports reading and is fully optional; the page is legible with it off."
+    ],
+    "rules": [
+      { "name": "The One Accent Rule", "body": "Terracotta carries the brand on ≤10% of any given screen. Gold is the only permitted second voice and stays quieter. Never add a third hue to balance them; the restraint is the identity.", "section": "colors" },
+      { "name": "The Warm-Paper Rule", "body": "The page background is always a warm cream or sand, never pure #FFFFFF. White is reserved for cards that need to lift off the paper.", "section": "colors" },
+      { "name": "The Caps-for-Labels-Only Rule", "body": "Uppercase + wide tracking is reserved for short labels and eyebrows (≤4 words) and the logo. Never set sentences or body copy in all caps.", "section": "typography" },
+      { "name": "The Flat-at-Rest Rule", "body": "Cards and surfaces are flat with a hairline border at rest. Shadow is a state, earned by hover, focus, or elevation, never the default look.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do keep the page background warm (Cream #FAF7F2 or Sand #F0EBE3); reserve pure white for cards.",
+      "Do spend terracotta sparingly (≤10% of a screen) and let gold play only a supporting second.",
+      "Do set headlines in Syne and body in DM Sans; this pairing is the committed identity.",
+      "Do keep prose measures at 65-75ch and use Ink (#292524) for primary reading text.",
+      "Do treat shadows as a hover/elevation state with warm espresso-tinted values, not ambient gray.",
+      "Do ship a prefers-reduced-motion fallback for every reveal and hover; content must be fully visible with motion off."
+    ],
+    "donts": [
+      "Don't build a generic SaaS landing page: no gradient heroes, no purple-on-white, no big-number hero-metric template, no identical icon-card grids.",
+      "Don't drift toward the corporate LinkedIn / resume-builder look: no stock photography, no default-blue palette, no point-of-view-free layouts.",
+      "Don't reach for the dark developer-terminal aesthetic: no neon-on-black, no monospace-as-costume.",
+      "Don't add flashy maximalism: parallax overload or motion that upstages the content.",
+      "Don't lighten the text tokens back toward the old #78716C / #A8A29E values; they failed AA on the sand sections. Text must clear 4.5:1 on sand (#F0EBE3), and gold text must use #8A6309, not #B8860B.",
+      "Don't use a colored border-left/border-right stripe (or a ::before bar faking one) as a card accent; mark cards with a full border, a background tint like the current-role gold wash, or a leading glyph."
+    ]
+  }
+}

@@ -11,13 +11,16 @@
   --color-bg-dark: #1C1917;
   --color-bg-card: #FFFFFF;
   --color-text: #292524;
-  --color-text-secondary: #78716C;
-  --color-text-light: #A8A29E;
+  --color-text-secondary: #645D57;
+  --color-text-light: #6E6760;
   --color-accent: #C2410C;
   --color-accent-hover: #9A3412;
   --color-accent-light: #FFF7ED;
+  --color-accent-rgb: 194 65 12;
   --color-gold: #B8860B;
+  --color-gold-text: #8A6309;
   --color-gold-light: #FDF6E3;
+  --color-gold-rgb: 184 134 11;
   --color-border: #E7E0D6;
   --color-white: #FFFFFF;
   --color-shadow: rgba(28, 25, 23, 0.06);
@@ -183,24 +186,10 @@ button {
   margin-bottom: var(--space-4xl);
 }
 
-.section__label {
-  display: inline-block;
-  font-family: var(--font-body);
-  font-size: var(--font-size-xs);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: var(--color-accent);
-  margin-bottom: var(--space-md);
-}
-
-.section__label::after {
-  content: '';
-  display: block;
-  width: 36px;
-  height: 2px;
-  background-color: var(--color-accent);
-  margin: var(--space-sm) auto 0;
+/* Spacing rhythm: bare-title sections sit closer to their content,
+   subtitled headers keep generous air. Breaks the uniform gap. */
+.section__header:not(:has(.section__subtitle)) {
+  margin-bottom: var(--space-2xl);
 }
 
 .section__title {
@@ -208,7 +197,9 @@ button {
   font-size: var(--font-size-3xl);
   font-weight: 700;
   line-height: var(--line-height-tight);
+  letter-spacing: -0.01em;
   color: var(--color-text);
+  text-wrap: balance;
 }
 
 .section__subtitle {
@@ -219,6 +210,7 @@ button {
   margin-left: auto;
   margin-right: auto;
   line-height: 1.7;
+  text-wrap: pretty;
 }
 
 /* --- Typography --- */
@@ -247,14 +239,14 @@ h1, h2, h3, h4, h5, h6 {
 .btn--primary {
   background-color: var(--color-accent);
   color: var(--color-white);
-  box-shadow: 0 2px 8px rgba(194, 65, 12, 0.2);
+  box-shadow: 0 2px 8px rgb(var(--color-accent-rgb) / 0.2);
 }
 
 .btn--primary:hover {
   background-color: var(--color-accent-hover);
   color: var(--color-white);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(194, 65, 12, 0.3);
+  box-shadow: 0 6px 20px rgb(var(--color-accent-rgb) / 0.3);
 }
 
 .btn--outline {
@@ -472,6 +464,8 @@ h1, h2, h3, h4, h5, h6 {
   font-size: var(--font-size-hero);
   font-weight: 700;
   line-height: 1.12;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
   color: var(--color-text);
   margin-bottom: var(--space-xl);
   animation: heroFadeUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.35s forwards;
@@ -484,6 +478,7 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.7;
   margin-bottom: var(--space-2xl);
   max-width: 520px;
+  text-wrap: pretty;
   animation: heroFadeUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.5s forwards;
   opacity: 0;
 }
@@ -509,7 +504,7 @@ h1, h2, h3, h4, h5, h6 {
   object-fit: cover;
   border: 3px solid var(--color-gold);
   box-shadow:
-    0 0 0 10px rgba(184, 134, 11, 0.08),
+    0 0 0 10px rgb(var(--color-gold-rgb) / 0.08),
     0 24px 60px var(--color-shadow-lg);
   transition: transform var(--transition-slow), box-shadow var(--transition-slow);
 }
@@ -517,7 +512,7 @@ h1, h2, h3, h4, h5, h6 {
 .hero__photo:hover {
   transform: scale(1.02);
   box-shadow:
-    0 0 0 10px rgba(184, 134, 11, 0.12),
+    0 0 0 10px rgb(var(--color-gold-rgb) / 0.12),
     0 32px 72px var(--color-shadow-lg);
 }
 
@@ -547,43 +542,38 @@ h1, h2, h3, h4, h5, h6 {
   font-size: var(--font-size-lg);
   color: var(--color-text-secondary);
   line-height: 1.85;
+  text-wrap: pretty;
 }
 
-.stats {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: var(--space-lg);
+.about__figures {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: baseline;
+  gap: var(--space-md) var(--space-2xl);
+  margin-top: var(--space-2xl);
+  list-style: none;
 }
 
-.stat-card {
-  text-align: center;
-  padding: var(--space-xl) var(--space-lg);
-  background: var(--color-bg-card);
-  border-radius: var(--border-radius-lg);
-  border: 1px solid var(--color-border);
-  transition: transform var(--transition-base), box-shadow var(--transition-base);
+.figure {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
 }
 
-.stat-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 32px var(--color-shadow-md);
-}
-
-.stat-card__number {
+.figure__num {
   font-family: var(--font-heading);
-  font-size: var(--font-size-4xl);
-  font-weight: 800;
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
   color: var(--color-accent);
   line-height: 1;
-  margin-bottom: var(--space-xs);
 }
 
-.stat-card__label {
-  font-size: var(--font-size-xs);
+.figure__label {
+  font-size: var(--font-size-sm);
   color: var(--color-text-secondary);
   font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.02em;
 }
 
 /* ============================================
@@ -614,24 +604,8 @@ h1, h2, h3, h4, h5, h6 {
 
 /* The current role gets a warmer frame and a faint gold wash. */
 .experience:first-child {
-  border-color: rgba(184, 134, 11, 0.3);
+  border-color: rgb(var(--color-gold-rgb) / 0.3);
   background: var(--color-gold-light);
-}
-
-/* Accent spine — widens on hover. */
-.experience::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 3px;
-  height: 100%;
-  background: linear-gradient(to bottom, var(--color-accent), var(--color-gold));
-  transition: width var(--transition-base);
-}
-
-.experience:hover::before {
-  width: 6px;
 }
 
 /* Staggered cascade for the cards sharing the first viewport. */
@@ -642,7 +616,7 @@ h1, h2, h3, h4, h5, h6 {
 .experience:hover {
   transform: translateY(-4px);
   box-shadow: 0 14px 36px var(--color-shadow-md);
-  border-color: rgba(184, 134, 11, 0.32);
+  border-color: rgb(var(--color-gold-rgb) / 0.32);
   transition-delay: 0s;
 }
 
@@ -657,7 +631,7 @@ h1, h2, h3, h4, h5, h6 {
   order: -1;
   font-size: var(--font-size-xs);
   font-weight: 600;
-  color: var(--color-gold);
+  color: var(--color-gold-text);
   text-transform: uppercase;
   letter-spacing: 0.1em;
   margin-bottom: var(--space-sm);
@@ -683,6 +657,7 @@ h1, h2, h3, h4, h5, h6 {
   font-size: var(--font-size-base);
   color: var(--color-text-secondary);
   line-height: var(--line-height-normal);
+  text-wrap: pretty;
 }
 
 /* ============================================
@@ -1115,7 +1090,7 @@ h1, h2, h3, h4, h5, h6 {
 .form__textarea:focus {
   outline: none;
   border-color: var(--color-accent);
-  box-shadow: 0 0 0 3px rgba(194, 65, 12, 0.08);
+  box-shadow: 0 0 0 3px rgb(var(--color-accent-rgb) / 0.08);
 }
 
 .form__textarea {
@@ -1301,10 +1276,6 @@ h1, h2, h3, h4, h5, h6 {
     height: 280px;
   }
 
-  .stats {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
   .skills__grid {
     grid-template-columns: 1fr;
   }
@@ -1355,6 +1326,17 @@ h1, h2, h3, h4, h5, h6 {
 
   .nav__toggle {
     display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  /* Drawer links as full 44px tap rows */
+  .nav__link {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
   }
 
   .nav__cta {
@@ -1365,6 +1347,12 @@ h1, h2, h3, h4, h5, h6 {
   .nav__cta .btn {
     width: 100%;
     justify-content: center;
+  }
+
+  /* Experience cards: ease the horizontal padding so the prose measure
+     isn't squeezed on small screens. */
+  .experience-list .experience {
+    padding: var(--space-xl) var(--space-lg);
   }
 
   .hero__inner {
@@ -1420,25 +1408,28 @@ h1, h2, h3, h4, h5, h6 {
     padding: 0 var(--space-md);
   }
 
-  .stats {
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-md);
-  }
-
-  .stat-card {
-    padding: var(--space-lg);
-  }
-
-  .stat-card__number {
-    font-size: var(--font-size-3xl);
-  }
-
   .publications__grid {
     grid-template-columns: 1fr;
   }
 
+  .experience-list .experience {
+    padding: var(--space-lg);
+  }
+
   .modal__body {
     padding: var(--space-lg);
+  }
+}
+
+/* --- Touch devices: 44px minimum tap targets --- */
+@media (pointer: coarse) {
+  .btn {
+    min-height: 44px;
+  }
+
+  .modal__close {
+    width: 44px;
+    height: 44px;
   }
 }
 
