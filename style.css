@@ -838,6 +838,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
   aspect-ratio: 16 / 10;
   object-fit: cover;
+  object-position: top;
   display: block;
   filter: saturate(0.85) brightness(0.96);
   transition: all var(--transition-slow);
