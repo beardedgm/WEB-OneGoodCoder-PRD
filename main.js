@@ -14,7 +14,6 @@
     initSmoothScroll();
     initScrollSpy();
     initRevealAnimations();
-    initCountUp();
     initPortfolioModals();
     initContactForm();
   }
@@ -173,60 +172,6 @@
     reveals.forEach(function (el) {
       observer.observe(el);
     });
-  }
-
-  /* ============================================
-     COUNT-UP ANIMATION
-     ============================================ */
-  function initCountUp() {
-    var counters = document.querySelectorAll('[data-count]');
-    if (!counters.length) return;
-
-    // Skip animation if reduced motion
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      counters.forEach(function (el) {
-        el.textContent = el.getAttribute('data-count');
-      });
-      return;
-    }
-
-    var observer = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            animateCounter(entry.target);
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.5 }
-    );
-
-    counters.forEach(function (el) {
-      observer.observe(el);
-    });
-  }
-
-  function animateCounter(el) {
-    var target = parseInt(el.getAttribute('data-count'), 10);
-    var suffix = el.getAttribute('data-suffix') || '';
-    var duration = 1500;
-    var startTime = null;
-
-    function step(timestamp) {
-      if (!startTime) startTime = timestamp;
-      var progress = Math.min((timestamp - startTime) / duration, 1);
-      // Ease out cubic
-      var eased = 1 - Math.pow(1 - progress, 3);
-      var current = Math.round(eased * target);
-      el.textContent = current + suffix;
-
-      if (progress < 1) {
-        requestAnimationFrame(step);
-      }
-    }
-
-    requestAnimationFrame(step);
   }
 
   /* ============================================
