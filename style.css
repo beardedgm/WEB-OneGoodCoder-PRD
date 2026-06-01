@@ -580,70 +580,96 @@ h1, h2, h3, h4, h5, h6 {
    EXPERIENCE
    ============================================ */
 .experience-list {
-  max-width: 760px;
+  max-width: 980px;
   margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-lg);
 }
 
-/* Compound selector keeps the card's own transition from being clobbered
-   by the later, equal-specificity `.reveal` rule. */
+/* Each role is an editorial CV row: a left meta-rail and a prose body,
+   divided by hairline rules. No card chrome. The compound selector keeps the
+   entrance transition from being clobbered by the later `.reveal` rule. */
 .experience-list .experience {
-  position: relative;
-  background: var(--color-bg-card);
+  display: grid;
+  grid-template-columns: minmax(170px, 210px) 1fr;
+  gap: clamp(var(--space-lg), 4vw, var(--space-3xl));
+  padding: var(--space-2xl) var(--space-lg);
+  border-top: 1px solid var(--color-border);
   border-radius: var(--border-radius-lg);
-  padding: var(--space-xl) var(--space-2xl);
-  border: 1px solid var(--color-border);
-  overflow: hidden;
   transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1),
               transform 0.7s cubic-bezier(0.4, 0, 0.2, 1),
-              box-shadow var(--transition-base),
-              border-color var(--transition-base);
+              background-color var(--transition-base);
 }
 
-/* The current role gets a warmer frame and a faint gold wash. */
-.experience:first-child {
-  border-color: rgb(var(--color-gold-rgb) / 0.3);
+.experience-list .experience:first-child {
+  border-top: none;
+}
+
+/* The current role reads as a softly highlighted band, not another box. */
+.experience--current {
   background: var(--color-gold-light);
 }
 
-/* Staggered cascade for the cards sharing the first viewport. */
+/* Staggered cascade for the rows sharing the first viewport. */
 .experience:nth-child(2) { transition-delay: 0.06s; }
 .experience:nth-child(3) { transition-delay: 0.12s; }
 .experience:nth-child(4) { transition-delay: 0.18s; }
 
+/* Scanning affordance: a faint warm wash on hover. No lift; these aren't cards. */
 .experience:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 14px 36px var(--color-shadow-md);
-  border-color: rgb(var(--color-gold-rgb) / 0.32);
+  background: rgb(var(--color-gold-rgb) / 0.06);
   transition-delay: 0s;
 }
 
-.experience__heading {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: var(--space-md);
+.experience--current:hover {
+  background: var(--color-gold-light);
 }
 
-/* Date · location reads as an editorial eyebrow above the role. */
-.experience__meta {
-  order: -1;
+/* Left meta-rail: timeframe over location. */
+.experience__aside {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.experience__period {
   font-size: var(--font-size-xs);
   font-weight: 600;
   color: var(--color-gold-text);
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  margin-bottom: var(--space-sm);
+  letter-spacing: 0.08em;
+  line-height: 1.4;
+}
+
+.experience__location {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-light);
 }
 
 .experience__role {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
   font-family: var(--font-heading);
   font-size: var(--font-size-2xl);
   font-weight: 700;
   line-height: var(--line-height-tight);
   letter-spacing: -0.01em;
   color: var(--color-text);
+  text-wrap: balance;
+}
+
+/* "Current" pill beside the present role. */
+.experience__badge {
+  font-family: var(--font-body);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #745507;
+  background: rgb(var(--color-gold-rgb) / 0.16);
+  padding: 0.15em 0.65em;
+  border-radius: 100px;
+  white-space: nowrap;
 }
 
 .experience__company {
@@ -654,6 +680,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .experience__summary {
+  max-width: 62ch;
+  margin-top: var(--space-md);
   font-size: var(--font-size-base);
   color: var(--color-text-secondary);
   line-height: var(--line-height-normal);
@@ -1221,10 +1249,11 @@ h1, h2, h3, h4, h5, h6 {
     justify-content: center;
   }
 
-  /* Experience cards: ease the horizontal padding so the prose measure
-     isn't squeezed on small screens. */
+  /* CV rows stack: the meta-rail moves above the role, rules stay. */
   .experience-list .experience {
-    padding: var(--space-xl) var(--space-lg);
+    grid-template-columns: 1fr;
+    gap: var(--space-sm);
+    padding: var(--space-xl) var(--space-sm);
   }
 
   .hero__inner {
@@ -1281,7 +1310,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .experience-list .experience {
-    padding: var(--space-lg);
+    padding: var(--space-lg) var(--space-xs);
   }
 
   .modal__body {
