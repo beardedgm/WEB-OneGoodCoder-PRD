@@ -15,7 +15,6 @@
     initScrollSpy();
     initRevealAnimations();
     initCountUp();
-    initSkillBars();
     initPortfolioModals();
     initContactForm();
   }
@@ -228,33 +227,6 @@
     }
 
     requestAnimationFrame(step);
-  }
-
-  /* ============================================
-     SKILL BARS
-     ============================================ */
-  function initSkillBars() {
-    var bars = document.querySelectorAll('.skill-bar__fill');
-    if (!bars.length) return;
-
-    var observer = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            var width = entry.target.getAttribute('data-width');
-            if (width) {
-              entry.target.style.width = width;
-            }
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.3 }
-    );
-
-    bars.forEach(function (bar) {
-      observer.observe(bar);
-    });
   }
 
   /* ============================================
