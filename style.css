@@ -689,28 +689,6 @@ h1, h2, h3, h4, h5, h6 {
   text-wrap: pretty;
 }
 
-/* Scannable outcome highlights: a bold figure a recruiter can grab in seconds. */
-.experience__metrics {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-xs) var(--space-xl);
-  margin-top: var(--space-md);
-  list-style: none;
-}
-
-.experience__metric {
-  font-size: var(--font-size-sm);
-  color: var(--color-text-light);
-}
-
-.experience__metric-value {
-  margin-right: 0.4em;
-  font-family: var(--font-heading);
-  font-size: var(--font-size-lg);
-  font-weight: 700;
-  color: var(--color-text);
-}
-
 /* ============================================
    EDUCATION
    ============================================ */
