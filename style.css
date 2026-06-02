@@ -232,7 +232,9 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 600;
   letter-spacing: 0.02em;
   border-radius: var(--border-radius);
-  transition: all var(--transition-base);
+  transition: background-color var(--transition-base), color var(--transition-base),
+              border-color var(--transition-base), transform var(--transition-base),
+              box-shadow var(--transition-base);
   white-space: nowrap;
 }
 
@@ -282,7 +284,8 @@ h1, h2, h3, h4, h5, h6 {
   right: 0;
   height: var(--nav-height);
   z-index: 100;
-  transition: all var(--transition-base);
+  /* backdrop-filter is intentionally not transitioned (blur tween flickers). */
+  transition: background-color var(--transition-base), box-shadow var(--transition-base);
   background-color: transparent;
 }
 
@@ -369,7 +372,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 22px;
   height: 1.5px;
   background-color: var(--color-text);
-  transition: all var(--transition-base);
+  transition: transform var(--transition-base), opacity var(--transition-base);
   border-radius: 1px;
 }
 
@@ -500,19 +503,6 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow:
     0 0 0 10px rgb(var(--color-gold-rgb) / 0.12),
     0 32px 72px var(--color-shadow-lg);
-}
-
-/* Scroll indicator */
-.hero::after {
-  content: '';
-  position: absolute;
-  bottom: 2.5rem;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 1px;
-  height: 48px;
-  background: linear-gradient(to bottom, transparent, var(--color-text-light));
-  animation: scrollPulse 2.5s ease-in-out infinite;
 }
 
 /* ============================================
@@ -904,7 +894,7 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 200;
   opacity: 0;
   visibility: hidden;
-  transition: all var(--transition-base);
+  transition: opacity var(--transition-base), visibility var(--transition-base);
 }
 
 .modal-backdrop--visible {
@@ -926,7 +916,8 @@ h1, h2, h3, h4, h5, h6 {
   overflow-y: auto;
   opacity: 0;
   visibility: hidden;
-  transition: all var(--transition-base);
+  transition: opacity var(--transition-base), visibility var(--transition-base),
+              transform var(--transition-base);
   box-shadow: 0 32px 80px var(--color-shadow-lg);
 }
 
@@ -949,7 +940,7 @@ h1, h2, h3, h4, h5, h6 {
   background: var(--color-bg-alt);
   color: var(--color-text);
   font-size: var(--font-size-xl);
-  transition: all var(--transition-fast);
+  transition: background-color var(--transition-fast), transform var(--transition-fast);
   z-index: 1;
 }
 
@@ -1159,18 +1150,6 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-@keyframes scrollPulse {
-  0%, 100% {
-    opacity: 0;
-    transform: translateX(-50%) scaleY(0.4);
-    transform-origin: top;
-  }
-  50% {
-    opacity: 0.6;
-    transform: translateX(-50%) scaleY(1);
-  }
-}
-
 .reveal {
   opacity: 0;
   transform: translateY(28px);
@@ -1321,10 +1300,6 @@ h1, h2, h3, h4, h5, h6 {
     justify-content: center;
   }
 
-  .hero::after {
-    display: none;
-  }
-
   .portfolio__grid {
     grid-template-columns: 1fr;
   }
@@ -1401,18 +1376,12 @@ h1, h2, h3, h4, h5, h6 {
     opacity: 1;
     animation: none;
   }
-
-  .hero::after {
-    animation: none;
-    opacity: 0.4;
-  }
 }
 
 /* --- Print --- */
 @media print {
   .nav,
   .hero__bg,
-  .hero::after,
   .footer__back-to-top,
   .btn,
   .portfolio-card__overlay,
