@@ -29,17 +29,18 @@
 
     if (!nav) return;
 
-    // Scroll effect - solid background
-    function handleScroll() {
-      if (window.scrollY > 50) {
-        nav.classList.add('nav--scrolled');
-      } else {
-        nav.classList.remove('nav--scrolled');
-      }
-    }
+    // Solid-background state once the page scrolls past the top. A 50px sentinel
+    // at the document top is watched by an IntersectionObserver, so there is no
+    // per-frame scroll handler. The observer fires once on load (initial state).
+    var sentinel = document.createElement('div');
+    sentinel.setAttribute('aria-hidden', 'true');
+    sentinel.style.cssText =
+      'position:absolute;top:0;left:0;width:1px;height:50px;pointer-events:none;';
+    document.body.prepend(sentinel);
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll(); // initial check
+    new IntersectionObserver(function (entries) {
+      nav.classList.toggle('nav--scrolled', !entries[0].isIntersecting);
+    }).observe(sentinel);
 
     // Mobile menu toggle
     if (toggle && links) {
@@ -114,33 +115,38 @@
 
     if (!sections.length || !navLinks.length) return;
 
-    function onScroll() {
-      var scrollY = window.scrollY;
-      var navHeight = document.querySelector('.nav')
-        ? document.querySelector('.nav').offsetHeight
-        : 0;
+    var nav = document.querySelector('.nav');
+    var navHeight = nav ? nav.offsetHeight : 0;
 
-      var current = '';
-
-      sections.forEach(function (section) {
-        var top = section.offsetTop - navHeight - 100;
-        var bottom = top + section.offsetHeight;
-
-        if (scrollY >= top && scrollY < bottom) {
-          current = section.getAttribute('id');
-        }
-      });
-
+    function setActive(id) {
       navLinks.forEach(function (link) {
-        link.classList.remove('nav__link--active');
-        if (link.getAttribute('href') === '#' + current) {
-          link.classList.add('nav__link--active');
-        }
+        link.classList.toggle('nav__link--active', link.getAttribute('href') === '#' + id);
       });
     }
 
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
+    // A section counts as "current" while it occupies the band just below the
+    // nav (top of viewport down to ~45%). When several overlap, the one highest
+    // on the page wins, so the active link tracks the section under the nav.
+    var visible = new Set();
+    var observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) visible.add(entry.target);
+          else visible.delete(entry.target);
+        });
+
+        var topmost = null;
+        visible.forEach(function (sec) {
+          if (!topmost || sec.offsetTop < topmost.offsetTop) topmost = sec;
+        });
+        if (topmost) setActive(topmost.getAttribute('id'));
+      },
+      { rootMargin: '-' + navHeight + 'px 0px -55% 0px', threshold: 0 }
+    );
+
+    sections.forEach(function (section) {
+      observer.observe(section);
+    });
   }
 
   /* ============================================
@@ -186,17 +192,10 @@
 
     var currentModal = null;
 
+    // Cards are native <button>s, so Enter/Space already fire click.
     cards.forEach(function (card) {
       card.addEventListener('click', function () {
         openModal(this.getAttribute('data-modal'));
-      });
-
-      // Keyboard support
-      card.addEventListener('keydown', function (e) {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          openModal(this.getAttribute('data-modal'));
-        }
       });
     });
 
@@ -240,6 +239,31 @@
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && currentModal) {
         closeModal();
+      }
+    });
+
+    // Trap focus inside the open modal so Tab can't reach the page behind it.
+    document.addEventListener('keydown', function (e) {
+      if (e.key !== 'Tab' || !currentModal) return;
+
+      var focusable = currentModal.querySelectorAll(
+        'button:not([disabled]), a[href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      );
+      if (!focusable.length) return;
+
+      var first = focusable[0];
+      var last = focusable[focusable.length - 1];
+      var active = document.activeElement;
+      var inside = currentModal.contains(active);
+
+      if (e.shiftKey) {
+        if (active === first || !inside) {
+          e.preventDefault();
+          last.focus();
+        }
+      } else if (active === last || !inside) {
+        e.preventDefault();
+        first.focus();
       }
     });
 

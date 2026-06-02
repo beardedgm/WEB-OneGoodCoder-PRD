@@ -806,6 +806,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .portfolio-card {
+  /* Native <button>: strip default chrome so it lays out like the card it is. */
+  appearance: none;
+  display: block;
+  width: 100%;
+  padding: 0;
+  text-align: left;
+  font-family: inherit;
+  color: inherit;
   position: relative;
   border-radius: var(--border-radius-lg);
   overflow: hidden;
