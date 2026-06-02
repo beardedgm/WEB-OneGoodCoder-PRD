@@ -390,6 +390,7 @@ h1, h2, h3, h4, h5, h6 {
    ============================================ */
 .hero {
   min-height: 100vh;
+  min-height: 100dvh; /* avoid iOS Safari address-bar jump; vh is the fallback */
   display: flex;
   align-items: center;
   position: relative;
@@ -443,21 +444,6 @@ h1, h2, h3, h4, h5, h6 {
   min-width: 0;
 }
 
-.hero__label {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-xs);
-  padding: 0.4rem 1rem;
-  background-color: var(--color-accent-light);
-  color: var(--color-accent);
-  border-radius: 100px;
-  font-size: var(--font-size-xs);
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  margin-bottom: var(--space-xl);
-}
-
 .hero__title {
   font-family: var(--font-heading);
   font-size: var(--font-size-hero);
@@ -491,7 +477,6 @@ h1, h2, h3, h4, h5, h6 {
 /* The hero is visible by default; the staggered entrance is layered on only
    for motion-enabled users, so content never depends on the animation firing. */
 @media (prefers-reduced-motion: no-preference) {
-  .hero__label { opacity: 0; animation: heroFadeUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s forwards; }
   .hero__photo-wrapper { opacity: 0; animation: heroFadeUp 0.9s cubic-bezier(0.4, 0, 0.2, 1) 0.3s forwards; }
   .hero__title { opacity: 0; animation: heroFadeUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.35s forwards; }
   .hero__subtitle { opacity: 0; animation: heroFadeUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.5s forwards; }
@@ -1241,6 +1226,7 @@ h1, h2, h3, h4, h5, h6 {
     right: -100%;
     width: 280px;
     height: 100vh;
+    height: 100dvh;
     flex-direction: column;
     background: var(--color-bg);
     padding: calc(var(--nav-height) + var(--space-xl)) var(--space-xl) var(--space-xl);
@@ -1400,7 +1386,6 @@ h1, h2, h3, h4, h5, h6 {
     transform: none;
   }
 
-  .hero__label,
   .hero__title,
   .hero__subtitle,
   .hero__actions,

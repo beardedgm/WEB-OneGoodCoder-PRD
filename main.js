@@ -16,6 +16,7 @@
     initRevealAnimations();
     initPortfolioModals();
     initPrintResume();
+    initFooterYear();
   }
 
   /* ============================================
@@ -259,5 +260,13 @@
     btn.addEventListener('click', function () {
       window.print();
     });
+  }
+
+  /* ============================================
+     FOOTER YEAR
+     ============================================ */
+  function initFooterYear() {
+    var el = document.getElementById('footer-year');
+    if (el) el.textContent = new Date().getFullYear();
   }
 })();
