@@ -655,6 +655,29 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: var(--space-xs);
 }
 
+/* Quiet capability list per role: gold uppercase label (matching the meta-rail
+   period style) over a muted comma list. No chips, so the accent budget holds. */
+.experience__areas {
+  margin-top: var(--space-md);
+}
+
+.experience__areas-label {
+  display: block;
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-gold-text);
+  margin-bottom: var(--space-xs);
+}
+
+.experience__areas-list {
+  max-width: 62ch;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
 .experience__summary {
   max-width: 62ch;
   margin-top: var(--space-md);
