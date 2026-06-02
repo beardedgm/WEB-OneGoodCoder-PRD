@@ -12,6 +12,6 @@ This is a **brand** surface (design IS the product). Before any UI work, read th
 
 **Creative North Star: "The Editorial Résumé."** Warm cream paper, a single burnt-terracotta accent (≤10% of any screen) with antique gold as a quiet second, Syne display + DM Sans body. Identity is committed: preserve the fonts and palette rather than swapping them. Background is always cream/sand, never pure white (white is for cards). Honor `prefers-reduced-motion`; never gate content behind a reveal transition.
 
-Watch contrast: `--color-text-secondary` (#78716C) sits at the AA floor on cream and dips below on `--color-bg-alt` — use `--color-text` for long body copy.
+Watch contrast: `--color-text-secondary` (#645D57) clears AA on both cream and `--color-bg-alt`, but it's a muted secondary tone — use `--color-text` for long body copy.
 
 The `/impeccable` skill is set up here (`/impeccable critique`, `audit`, `polish`, `live`).
