@@ -4,3 +4,7 @@ dist/
 .DS_Store
 *.log
 .claude/
+.impeccable/
+package.json
+package-lock.json
+skills-lock.json
