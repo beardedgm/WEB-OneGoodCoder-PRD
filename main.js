@@ -17,6 +17,7 @@
     initPortfolioModals();
     initPrintResume();
     initFooterYear();
+    initBackToTop();
   }
 
   /* ============================================
@@ -292,5 +293,16 @@
   function initFooterYear() {
     var el = document.getElementById('footer-year');
     if (el) el.textContent = new Date().getFullYear();
+  }
+
+  /* ============================================
+     BACK TO TOP
+     ============================================ */
+  function initBackToTop() {
+    var btn = document.getElementById('back-to-top');
+    if (!btn) return;
+    btn.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
   }
 })();
